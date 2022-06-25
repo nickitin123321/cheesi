@@ -1,0 +1,6 @@
+.row_cell {
+  display: flex;
+  border: 1px solid grey;
+  width: 30px;
+  height: 30px;
+}

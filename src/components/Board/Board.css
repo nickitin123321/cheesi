@@ -1,0 +1,10 @@
+.board {
+  margin-top: 10px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 256px;
+  height: 256px;
+  border: 4px outset grey;
+  flex-direction: column;
+}

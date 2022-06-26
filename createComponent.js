@@ -1,10 +1,19 @@
 const fs = require('fs');
 
-const getExportLine = (name) =>  `export { default } from './${name}'`
+const getExportLineTemplate = (name) =>  `export { default } from './${name}'`
+const getComponentTemplate = (name, lowerName) => `const ${name} = () => {
+  return <div className='${lowerName}'></div>
+}
+
+export default ${name}`
+const getStyleTemplate = (name) => `
+.${name} {
+
+}`
 
 const  createDir  = (name) => {
   const dirName =  `./${name}`
-  fs.mkdir(dirName, { recursive: true }, err => {
+  fs.mkdirSync(dirName, { recursive: true }, err => {
     if (err) throw err;
   });
 
@@ -12,7 +21,7 @@ const  createDir  = (name) => {
 }
 
 const createFile  = (name, content) => {
-  fs.appendFile(`${name}`, content,   err => {
+  fs.appendFileSync(`${name}`, content,   err => {
     if (err) throw err;
   });
 }
@@ -26,11 +35,12 @@ const createComponent = () => {
     throw new Error('Enter component name argument');
   }
 
+  const lowerName = `${name[0].toLowerCase()}${name.slice(1)}`;
 
   createDir(name);
-  createFile(`${name}.js`, '');
-  createFile(`${name}.css`, '');
-  createFile('index.js',  getExportLine(name));
+  createFile(`${name}.js`, getComponentTemplate(name, lowerName));
+  createFile(`${name}.css`, getStyleTemplate(lowerName));
+  createFile('index.js',  getExportLineTemplate(name));
 }
 
 createComponent()

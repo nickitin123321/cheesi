@@ -10,7 +10,7 @@ const Board = () => {
     rows.push(<Row key = {getUid()} rowIndex = {i}/>);
   }
 
-  return <div className='board'>
+  return <div className='game_board'>
       { rows }
     </div>
 }

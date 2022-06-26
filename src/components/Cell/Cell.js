@@ -21,7 +21,7 @@ const Cell = ({color, rowIndex, cellIndex}) => {
   className = 'row_cell'
   style={ {background: color} }>
     {figure}
-</div>
+  </div>
 }
 
 export default Cell;

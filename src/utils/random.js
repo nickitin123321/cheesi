@@ -1,0 +1,1 @@
+export const getUid = (prefix = '', postfix = '') => `${prefix}${Math.random().toString(36).substring(2,15)}${postfix}`;

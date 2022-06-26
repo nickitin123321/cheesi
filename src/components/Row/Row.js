@@ -11,7 +11,7 @@ const Row = ({rowIndex}) => {
   }
 
   return <div className = 'board_row'>
-    { cells.map((cell) => cell) }
+    { cells }
   </div>
 }
 

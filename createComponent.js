@@ -6,8 +6,7 @@ const getComponentTemplate = (name, lowerName) => `const ${name} = () => {
 }
 
 export default ${name}`
-const getStyleTemplate = (name) => `
-.${name} {
+const getStyleTemplate = (name) => `.${name} {
 
 }`
 

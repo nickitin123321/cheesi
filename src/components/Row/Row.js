@@ -1,4 +1,5 @@
 import Cell from '../Cell'
+import { getUid } from '../../utils/random';
 
 import './Row.css';
 
@@ -7,7 +8,7 @@ const Row = ({rowIndex}) => {
 
   for (let i = 0; i < 8; i++){
     cells.push(
-    <Cell color ={ (rowIndex + i ) % 2 === 0  ? 'white' : 'lightgrey'}
+    <Cell key = {getUid()} color ={ (rowIndex + i ) % 2 === 0  ? 'white' : 'lightgrey'}
     rowIndex={rowIndex} cellIndex={i}/>)
   }
 

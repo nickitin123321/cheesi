@@ -1,48 +1,22 @@
-.cell_figure-pawn {
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
+.cell_figure {
   margin: auto;
-  background-color: grey;
-  border: 2px solid rgb(61, 87, 156);
+}
+
+.cell_figure-pawn {
 }
 
 .cell_figure-rook {
-  width: 18px;
-  height: 18px;
-  margin: auto;
-  background-color: grey;
-  border: 2px solid rgb(61, 87, 156);
+
 }
 
 .cell_figure-knight {
-  width: 18px;
-  height: 18px;
-  margin: auto;
-  background-color: grey;
-  border: 2px solid rgb(61, 87, 156);
 }
 
 .cell_figure-bishop {
-  width: 18px;
-  height: 18px;
-  margin: auto;
-  background-color: grey;
-  border: 2px solid rgb(61, 87, 156);
 }
 
 .cell_figure-king {
-  width: 18px;
-  height: 18px;
-  margin: auto;
-  background-color: grey;
-  border: 2px solid rgb(61, 87, 156);
 }
 
 .cell_figure-queen {
-  width: 18px;
-  height: 18px;
-  margin: auto;
-  background-color: grey;
-  border: 2px solid rgb(61, 87, 156);
 }

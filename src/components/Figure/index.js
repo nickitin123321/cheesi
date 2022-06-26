@@ -1,1 +1,1 @@
-export { default } from './Figure'
+export { default, FIGURE_MAP, FIGURE_NAMES } from './Figure';

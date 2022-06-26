@@ -1,17 +1,19 @@
+import Figure, {FIGURE_MAP, FIGURE_NAMES} from '../Figure';
+
 import './Cell.css';
-import Figure from '../Figure'
+
+const choseFigure = ({name, rowIndex, cellIndex}) =>
+FIGURE_MAP[name].index.row.includes(rowIndex) &&
+FIGURE_MAP[name].index.cell.includes(cellIndex);
 
 const Cell = ({color, rowIndex, cellIndex}) => {
-  let figure;
+  let figure
 
-  if( rowIndex === 1 || rowIndex === 6) {
-    figure = <Figure figureType={'pawn'}/>
-  }
-
-  if((rowIndex === 0 || rowIndex === 7) &&
-   (cellIndex === 0 || cellIndex === 7)) {
-    figure = <Figure figureType={'rook'}/>
-  }
+  FIGURE_NAMES.forEach((name) =>{
+    if (choseFigure({rowIndex, cellIndex, name})){
+      figure = <Figure name = {name} color = {rowIndex > 3 ? 'white' : 'black' }/>
+    }
+  })
 
   return <div
   className = 'row_cell'

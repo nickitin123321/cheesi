@@ -1,4 +1,5 @@
 import Cell from '../Cell'
+
 import './Row.css';
 
 const Row = ({rowIndex}) => {
@@ -6,7 +7,7 @@ const Row = ({rowIndex}) => {
 
   for (let i = 0; i < 8; i++){
     cells.push(
-    <Cell color ={ (rowIndex + i ) % 2 === 0  ? 'white' : 'black'}
+    <Cell color ={ (rowIndex + i ) % 2 === 0  ? 'white' : 'lightgrey'}
     rowIndex={rowIndex} cellIndex={i}/>)
   }
 

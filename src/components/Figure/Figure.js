@@ -33,7 +33,7 @@ export const FIGURE_MAP = {
   },
 };
 
-export const FIGURE_NAMES =   Object.keys(FIGURE_MAP);
+export const FIGURE_NAMES = Object.keys(FIGURE_MAP);
 
 const Figure = ({name, color}) =>
   <div className = {`cell_figure cell_figure-${name}`}>

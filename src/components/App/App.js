@@ -1,9 +1,13 @@
 import './App.css';
 import Board from '../Board';
+import LeftPanel from '../LeftPanel/LeftPanel';
 
 function App() {
   return (
-    <Board/>
+    <div className='app'>
+      <LeftPanel/>
+      <Board/>
+    </div>
   );
 }
 

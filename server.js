@@ -1,6 +1,6 @@
 const http = require('node:http');
-const HOST_NAME =  '127.0.0.1';
-const PORT = 3000;
+const HOST_NAME = '127.0.0.1';
+const PORT = 3001;
 
 const server = http.createServer((req, res) => {
   res.statusCode =  200;
@@ -9,5 +9,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, HOST_NAME, () => {
-  console.log(`running`);
+  console.log(`running on ${PORT}`);
 });

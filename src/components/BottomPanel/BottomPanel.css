@@ -1,2 +1,12 @@
 .bottomPanel {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.bottomPanel_item {
+  display: flex;
+  align-items: center;
+  height: 32px
 }

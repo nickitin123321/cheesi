@@ -1,10 +1,10 @@
+.leftPanel {
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
 .leftPanel_item {
   display: flex;
   align-items: center;
   height: 32px;
-}
-
-.leftPanel {
-  margin-top: 10px;
-  margin-right: 5px;
 }

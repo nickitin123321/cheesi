@@ -1,10 +1,9 @@
+import { getUid } from '../../utils/random';
 import './LeftPanel.css';
-
-const numberArr = [...Array(8).keys()].map((n)=> n + 1)
 
 const LeftPanel = () => {
   return <div className='leftPanel'>
-    {numberArr.reverse().map((num) => <div class='leftPanel_item'>{num}</div>)}
+    {[8, 7, 6, 5, 4, 3, 2, 1].map((num) => <div key ={getUid()} className='leftPanel_item'>{num}</div>)}
   </div>
 }
 

@@ -36,9 +36,9 @@ const createComponent = () => {
   const lowerName = `${name[0].toLowerCase()}${name.slice(1)}`;
 
   createDir(name);
-  createFile(`${name}.tsx`, getComponentTemplate(name, lowerName));
+  createFile(`${name}.js`, getComponentTemplate(name, lowerName));
   createFile(`${name}.css`, getStyleTemplate(lowerName));
-  createFile('index.tsx',  getExportLineTemplate(name));
+  createFile('index.js',  getExportLineTemplate(name));
 }
 
 createComponent()

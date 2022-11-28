@@ -17,8 +17,10 @@ const Board = () => {
     ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖'],
   ])
 
+  const hState = useState([])
+
   for (let i = 0; i < 8; i++){
-    rows.push(<Row gState = {game} key = {getUid()} rowIndex = {i}/>);
+    rows.push(<Row gState = {game} hState = {hState} key = {getUid()} rowIndex = {i}/>);
   }
 
   return <div className='game_board'>

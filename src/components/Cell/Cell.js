@@ -1,7 +1,7 @@
 
 import './Cell.css';
 
-const whiteFigures = ['♟', '♜', '♞', '♝', '♛', '♚']
+const blackFigures = ['♟', '♜', '♞', '♝', '♛', '♚']
 const figures = {
   '♟': 'pawn',
   '♜': 'rook',
@@ -17,9 +17,15 @@ const figures = {
   '♔': 'king',
 }
 
+let curFigure = ''
+let isWhiteTurn = true
+let curPos = null
+
+const isBlack = (figure) => blackFigures.includes(figure)
+
 const Cell = ({color, rowIndex, cellIndex, gState, hState}) => {
-  const [g, setG] = gState
-  const [hArr, setHArr] = hState
+  const [g, setG] = gState;
+  const [hArr, setHArr] = hState;
 
   const movable = hArr.some(({cell, row}) => cell === cellIndex && row === rowIndex)
 
@@ -27,27 +33,62 @@ const Cell = ({color, rowIndex, cellIndex, gState, hState}) => {
     className = 'row_cell'
     onClick = {movable ?
       () => setG((prev) => {
-        const figure = prev[rowIndex - 1][cellIndex]
-        const arr = [...prev]
-        const move = rowIndex - 1 + (whiteFigures.includes(figure) ? 1 : -1)
+        const newState = [...prev]
+        const [curRow, curCell]= curPos
+        newState[curRow][curCell] = ''
+        newState[rowIndex][cellIndex] = curFigure
 
-        if(figure && figures[figure] === 'pawn'){
-          arr[rowIndex - 1][cellIndex] = ''
-          arr[move][cellIndex] = figure
-        }
-
-        return arr
+        isWhiteTurn = !isWhiteTurn
+        return newState
       })
       :
       () => {
-        const figure = g[rowIndex][cellIndex]
+        const figure = g[rowIndex][cellIndex];
+        const isBlackFigure = isBlack(figure);
 
-        if(figure && figures[figure] === 'pawn'){
-          const move = rowIndex + (whiteFigures.includes(figure) ? 1 : -1)
-          setHArr([{cell: cellIndex, row: move}])
+        if(((isBlackFigure && !isWhiteTurn) || (!isBlackFigure && isWhiteTurn))
+          && figure
+          ){
+          curFigure = figure
+          //TODO figure move limit
+          switch (figures[figure]) {
+            case 'pawn':
+              setHArr([{cell: cellIndex, row: rowIndex + (isBlackFigure ? 1 : -1)}])
+              break;
+            case 'knight': {
+              const move = rowIndex + (isBlackFigure ? 2 : -2)
+              setHArr([{cell: cellIndex + 1, row: move}, {cell: cellIndex - 1, row: move}])
+              break;
+            }
+            case 'rook': {
+              const arr = [];
+              for (let i = 1; i < 8; i++) {
+                arr.push({cell: cellIndex, row: rowIndex - i});
+                arr.push({cell: cellIndex, row: rowIndex + i});
+                arr.push({cell: cellIndex - i, row: rowIndex})
+                arr.push({cell: cellIndex + i, row: rowIndex})
+              }
+              setHArr(arr)
+              break;
+            }
+            case 'bishop': {
+              const arr = [];
+              for (let i = 1; i < 8; i++) {
+                arr.push({cell: cellIndex - i, row: rowIndex - i});
+                arr.push({cell: cellIndex + i, row: rowIndex + i});
+                arr.push({cell: cellIndex - i, row: rowIndex + i});
+                arr.push({cell: cellIndex + i, row: rowIndex - i});
+              }
+              setHArr(arr)
+              break;
+            }
+            default:
+              break;
+              }
+          curPos = [rowIndex, cellIndex]
         }
    }}
-  style={ {background: movable? 'yellowgreen' : color} }>
+  style={ {background: movable ? 'yellowgreen' : color} }>
     <div className='cell_figure'>
       {g[rowIndex][cellIndex]}
     </div>

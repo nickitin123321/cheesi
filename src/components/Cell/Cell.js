@@ -39,6 +39,7 @@ const Cell = ({color, rowIndex, cellIndex, gState, hState}) => {
         newState[rowIndex][cellIndex] = curFigure
 
         isWhiteTurn = !isWhiteTurn
+        setHArr([])
         return newState
       })
       :
@@ -65,8 +66,8 @@ const Cell = ({color, rowIndex, cellIndex, gState, hState}) => {
               for (let i = 1; i < 8; i++) {
                 arr.push({cell: cellIndex, row: rowIndex - i});
                 arr.push({cell: cellIndex, row: rowIndex + i});
-                arr.push({cell: cellIndex - i, row: rowIndex})
-                arr.push({cell: cellIndex + i, row: rowIndex})
+                arr.push({cell: cellIndex - i, row: rowIndex});
+                arr.push({cell: cellIndex + i, row: rowIndex});
               }
               setHArr(arr)
               break;
@@ -79,6 +80,20 @@ const Cell = ({color, rowIndex, cellIndex, gState, hState}) => {
                 arr.push({cell: cellIndex - i, row: rowIndex + i});
                 arr.push({cell: cellIndex + i, row: rowIndex - i});
               }
+              setHArr(arr)
+              break;
+            }
+            case 'king': {
+              const arr = [];
+                arr.push({cell: cellIndex - 1, row: rowIndex});
+                arr.push({cell: cellIndex + 1, row: rowIndex});
+                arr.push({cell: cellIndex + 1, row: rowIndex + 1});
+                arr.push({cell: cellIndex - 1, row: rowIndex - 1});
+                arr.push({cell: cellIndex, row: rowIndex - 1});
+                arr.push({cell: cellIndex - 1, row: rowIndex});
+                arr.push({cell: cellIndex, row: rowIndex + 1});
+                arr.push({cell: cellIndex + 1, row: rowIndex - 1});
+                arr.push({cell: cellIndex - 1, row: rowIndex +1});
               setHArr(arr)
               break;
             }
